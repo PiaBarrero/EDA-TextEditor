@@ -16,7 +16,6 @@ typedef unsigned int Posicion;
 
 Palabra crearPalabrasVacia();
 
-int insertarPalabra(Texto a, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabra);
-
+int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabra);
 
 #endif // PALABRA_H

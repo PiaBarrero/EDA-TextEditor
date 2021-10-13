@@ -25,7 +25,7 @@ TipoRetorno BorrarLinea(Texto &a, Posicion posicion);
 
 TipoRetorno BorrarTodo(Texto &a);
 
-TipoRetorno InsertarPalabra(Texto a, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabra);
+TipoRetorno InsertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabra);
 
 /*
 TipoRetorno BorrarTodo(Texto &a);

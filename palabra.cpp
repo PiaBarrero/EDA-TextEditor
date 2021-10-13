@@ -5,7 +5,7 @@ Palabra crearPalabrasVacia(){
     return NULL;
 }
 
-int insertarPalabra(Texto a, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabra){
+int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabra){
     
 }
 
