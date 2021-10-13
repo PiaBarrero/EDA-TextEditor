@@ -10,10 +10,18 @@ struct str_linea{
 
 typedef struct str_linea * Texto;
 
-Texto crearTextoVacio();
+Texto crearTexto();
 
-void crearLinea(Texto &t);
+int largoTexto(Texto a);
 
-void imprimirLinea(Texto a);
+void insertarLinea(Texto &a);
+
+void imprimirTexto(Texto a);
+
+int insertarLineaEnPosicion(Texto &a, Posicion posicion);
+
+int borrarLinea(Texto &a, Posicion posicion);
+
+void borrarTodo(Texto &a);
 
 #endif // LINEA_H

@@ -10,7 +10,13 @@ struct str_pal{
 
 typedef struct str_pal * Palabra;
 
+typedef struct str_linea * Texto;
+
+typedef unsigned int Posicion;
+
 Palabra crearPalabrasVacia();
+
+int insertarPalabra(Texto a, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabra);
 
 
 #endif // PALABRA_H

@@ -5,6 +5,7 @@
 
 int main(){
     Texto t;
+    Posicion p = 4;
     TipoRetorno tr = CrearTexto(t); // un texto vacio
     //-------------------------
 
@@ -19,6 +20,15 @@ int main(){
     tr = InsertarLinea(t);
     tr = InsertarLinea(t);
     tr = InsertarLinea(t);
+
+    tr = InsertarLineaEnPosicion(t, p);
+
+    tr = BorrarLinea(t, p);
+
+
+    tr = BorrarTodo(t);
+
+
     tr = ImprimirTexto(t);
 
 }
