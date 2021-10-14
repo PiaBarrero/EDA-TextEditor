@@ -18,6 +18,10 @@ void insertarLinea(Texto &a);
 
 void imprimirTexto(Texto a);
 
+void imprimirLinea(Texto a);
+
+Texto InvertirTexto(Texto a);
+
 int insertarLineaEnPosicion(Texto &a, Posicion posicion);
 
 int borrarLinea(Texto &a, Posicion posicion);

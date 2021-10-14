@@ -29,15 +29,54 @@ void insertarLinea(Texto &a)
 
 void imprimirTexto(Texto a)
 {
+    Texto aux = InvertirTexto(a);
+
     if (a == NULL)
     {
-        printf(" NULL \n");
+        printf("Texto vacio.");
     }
     else
     {
-        imprimirTexto(a->sig);
-        printf(" hay linea \n");
+        int count = 1;
+
+        while (aux != NULL)
+        {
+
+            printf("%d: ", count);
+            imprimirLinea(aux);
+            printf("\n");
+
+            count++;
+            aux = aux->sig;
+        }
     }
+}
+
+void imprimirLinea(Texto a)
+{
+    while (a->palabras != NULL)
+    {
+        printf("%s ", a->palabras->palabra);
+        a->palabras = a->palabras->sig;
+    }
+}
+
+Texto InvertirTexto(Texto a)
+{
+    Texto aux = crearTexto();
+    Texto aux2 = aux;
+
+    while (a != NULL)
+    {
+        aux = new str_linea;
+        aux->palabras = a->palabras;
+        aux->sig = aux2;
+        aux2 = aux;
+
+        a = a->sig;
+    }
+
+    return aux2;
 }
 
 int insertarLineaEnPosicion(Texto &a, Posicion posicion)
@@ -73,10 +112,11 @@ int insertarLineaEnPosicion(Texto &a, Posicion posicion)
                 }
                 else
                 {
-                    ant->sig = new str_linea;
-                    ant->sig->palabras = crearPalabrasVacia();
-                    ant->sig->sig = aux;
-                    a = ant;
+                    Texto x = new str_linea;
+                    x->palabras = crearPalabrasVacia();
+                    x->sig = aux->sig;
+
+                    aux->sig = x;   
 
                     return 1;
                 }

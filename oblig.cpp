@@ -43,7 +43,11 @@ TipoRetorno BorrarTodo(Texto &a){
 TipoRetorno InsertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabra){
     int response = insertarPalabra(a, posicionLinea, posicionPalabra, palabra);
 
-
+    if(response == 1){
+        return OK;
+    }else{
+        return ERROR;
+    }        
 }
 
 /*
