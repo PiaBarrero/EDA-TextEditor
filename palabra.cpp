@@ -74,7 +74,7 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
                     auxP->sig = NULL;
                     aux->palabras = auxP;
 
-                    return 1;
+                    return 0;
                 }
                 else
                 {
@@ -90,7 +90,7 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
                                 antP->sig = auxP;
                                 aux->palabras = antP;
 
-                                return 1;
+                                return 0;
                             }
                             else
                             {
@@ -98,7 +98,7 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
                                 antP->sig->palabra = palabra;
                                 antP->sig->sig = auxP;
 
-                                return 1;
+                                return 0;
                             }
                         }
                         else if (auxP->sig == NULL)
@@ -107,7 +107,7 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
                             auxP->sig->palabra = palabra;
                             auxP->sig->sig = NULL;        
 
-                            return 1;
+                            return 0;
                         }
 
                         antP = auxP;
@@ -123,7 +123,7 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
     }
     else
     {
-        return 0;
+        return 1;
     }
 }
 
@@ -139,6 +139,44 @@ int borrarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra){
 
     if ((posicionLinea <= countL) && (posicionLinea >= 1) && (posicionPalabra >= 1) && (posicionPalabra <= largoP + 1))
     { // Si la posicion de la linea y de la palabra existen:
+
+        while (aux != NULL)
+        {
+            if (countL == posicionLinea){ //Si el contador llego a la posicion en linea
+
+                //Creo una linea auxiliar y anterior
+                Palabra auxP = aux->palabras; //AuxP apunta al primer nodo de aux (la linea original en la posicionLinea)
+                Palabra antP = auxP;
+
+                if (auxP == NULL) //Si la linea está vacía
+                {         
+                    return 1; //Error porque no hay nada pa borrar, aunque si no hay no deberia entrar por el if anterior, so.. debe estar mal
+                }else{  
+
+                    while (auxP != NULL) // Recorro la linea
+                    {
+                        if (countP == posicionPalabra) // Si el contador llegó a la posicionPalabra
+                        {
+                            if (antP == auxP){ //Si antp y auxp estan con el mismo nodo
+                                delete antP;
+                                delete auxP;
+                                return 0;
+                            }else{
+                                antP = auxP->sig; // el nodo de antp, saltea el nodo actual de auxP y apunta al siguiente de auxP
+                                delete auxP;
+                                aux=aux->sig;
+                                return 0;
+                            }
+                        }
+                        antP = auxP;
+                        auxP = auxP->sig;
+                        countP++;
+                    }
+                }
+                aux = aux->sig;
+                countL--;
+            }
+        }
         
 
         return 0;
