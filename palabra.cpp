@@ -49,7 +49,6 @@ int largoLinea(Texto a, Posicion posicion)
 int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabra)
 {
     Texto aux = a;
-    Texto ant = a;
 
     int countL = largoTexto(a);
     int largoL = countL;
@@ -74,7 +73,7 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
                     auxP->sig = NULL;
                     aux->palabras = auxP;
 
-                    return 0;
+                    return 1;
                 }
                 else
                 {
@@ -90,7 +89,7 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
                                 antP->sig = auxP;
                                 aux->palabras = antP;
 
-                                return 0;
+                                return 1;
                             }
                             else
                             {
@@ -98,7 +97,7 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
                                 antP->sig->palabra = palabra;
                                 antP->sig->sig = auxP;
 
-                                return 0;
+                                return 1;
                             }
                         }
                         else if (auxP->sig == NULL)
@@ -107,7 +106,7 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
                             auxP->sig->palabra = palabra;
                             auxP->sig->sig = NULL;        
 
-                            return 0;
+                            return 1;
                         }
 
                         antP = auxP;
@@ -123,7 +122,7 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
     }
     else
     {
-        return 1;
+        return 0;
     }
 }
 
@@ -150,7 +149,7 @@ int borrarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra){
 
                 if (auxP == NULL) //Si la linea está vacía
                 {         
-                    return 1; //Error porque no hay nada pa borrar, aunque si no hay no deberia entrar por el if anterior, so.. debe estar mal
+                    return 0; 
                 }else{  
 
                     while (auxP != NULL) // Recorro la linea
@@ -162,13 +161,13 @@ int borrarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra){
                                 delete auxP;
                                 antP=antP->sig;  // Los hago avanzar
                                 auxP=auxP->sig;
-                                return 0;   //Done
+                                return 1;   //Done
                             }else{
                                 antP = auxP->sig; // el nodo actual de antp, saltea el nodo actual de auxP y apunta al siguiente de auxP
                                 delete auxP; //Borro el nodo actual de auxP
                                 auxP=auxP->sig; //le hago avanzar al siguiente nodo
                                 antP->sig = auxP->sig; //El siguiente nodo de antP apunta al siguiente de auxP
-                                return 0; //Done
+                                return 1; //Done
                             }
                         }
                         antP = auxP;
@@ -180,8 +179,89 @@ int borrarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra){
                 countL--;
             }
         }        
+        
+    }else{
+        return 0;
+    }
+}
+
+int borrarOcurrenciasPalabraEnLinea(Texto a,Posicion posicionLinea, Cadena palabraABorrar){
+    
+    Texto aux = a;
+    
+    int largoL = largoTexto(a);
+    int countL = largoL;
+
+    if(a == NULL){
         return 0;
     }else{
-        return 1;
+        if((posicionLinea <= countL) && (posicionLinea >= 1)){
+            while (aux != NULL)
+            {
+                if(countL == posicionLinea){
+                    
+                    //Creo una linea auxiliar y anterior
+                    Palabra auxP = aux->palabras; //AuxP apunta al primer nodo de aux (la linea original en la posicionLinea)
+                    Palabra antP = auxP;
+                    
+                    int largoP = largoLinea(a, countL);
+                    int countP = largoP;
+
+                    while (auxP != NULL)
+                    {   if (countP =! 0){
+                            if(antP == auxP){//Primer caso
+                                if(auxP->palabra == palabraABorrar){
+                                    delete auxP;
+                                    return 1;
+                                }else{
+                                    auxP = auxP->sig;
+                                    antP = auxP;
+                                }
+                            }else{
+                                if(auxP->palabra == palabraABorrar){
+                                    antP = auxP->sig;
+                                    delete auxP;                                
+                                    return 1;
+                                }else{
+                                    auxP = auxP->sig;
+                                    antP = auxP;
+                                }
+                            }                        
+                        }
+                        antP = auxP;
+                        auxP = auxP->sig;
+                        countP--;
+                    }
+                }else{
+
+                }
+                aux = aux->sig;
+                countL--;
+            }
+        }else{
+            return 0;
+        }
+
     }
+}
+
+int borrarOcurrenciasPalabraEnTexto(Texto a, Cadena palabraABorrar){
+
+    Texto aux = a;
+
+    int largoL = largoTexto(a);
+    int countL = largoL;
+    
+    if (a == NULL){
+        return 0;
+    }else{
+        while (aux != NULL)
+        {
+            borrarOcurrenciasPalabraEnLinea(a, countL, palabraABorrar);
+            aux=aux->sig;
+            countL--;
+        }
+        
+    }
+
 }

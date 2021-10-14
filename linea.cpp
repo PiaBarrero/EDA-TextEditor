@@ -83,6 +83,7 @@ int insertarLineaEnPosicion(Texto &a, Posicion posicion)
 {
     Texto aux = a;
     Texto ant = a;
+    Texto x = NULL;
 
     int largo = largoTexto(a);
     int count = largo;
@@ -112,7 +113,6 @@ int insertarLineaEnPosicion(Texto &a, Posicion posicion)
                 }
                 else
                 {
-                    Texto x = new str_linea;
                     x->palabras = crearPalabrasVacia();
                     x->sig = aux->sig;
 
@@ -128,6 +128,10 @@ int insertarLineaEnPosicion(Texto &a, Posicion posicion)
         }
     }
 }
+
+
+
+
 
 int borrarLinea(Texto &a, Posicion posicion)
 {

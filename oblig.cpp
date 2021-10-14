@@ -60,10 +60,26 @@ TipoRetorno BorrarPalabra(Texto a, Posicion posicionLinea, Posicion posicionPala
     }   
 }
 
+TipoRetorno BorrarOcurrenciasPalabraEnLinea(Texto a, Posicion posicionLinea, Cadena palabraABorrar){
+    int response = borrarOcurrenciasPalabraEnLinea(a, posicionLinea, palabraABorrar);
+
+    if(response == 1){
+        return OK;
+    }else{
+        return ERROR;
+    }  
+}
+
+TipoRetorno BorrarOcurrenciasPalabraEnTexto(Texto a, Cadena palabraABorrar){
+    int response = borrarOcurrenciasPalabraEnTexto(a, palabraABorrar);
+
+    if(response == 1){
+        return OK;
+    }else{
+        return ERROR;
+    }  
+}
+
 /*
-TipoRetorno BorrarOcurrenciasPalabraEnTexto(Texto a, Cadena palabraABorrar);
 TipoRetorno ComprimirTexto(Texto &a);
-TipoRetorno BorrarPalabra(Texto a, Posicion posicionLinea, Posicion posicionPalabra);
-TipoRetorno BorrarOcurrenciasPalabraEnLinea(Texto a, Posicion posicionLinea, Cadena palabraABorrar);
-TipoRetorno ImprimirLinea(Texto a, Posicion posicionLinea);
 */

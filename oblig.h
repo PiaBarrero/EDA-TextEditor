@@ -29,15 +29,12 @@ TipoRetorno InsertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionP
 
 TipoRetorno BorrarPalabra(Texto a, Posicion posicionLinea, Posicion posicionPalabra);
 
+TipoRetorno BorrarOcurrenciasPalabraEnLinea(Texto a, Posicion posicionLinea, Cadena palabraABorrar);
 
+TipoRetorno BorrarOcurrenciasPalabraEnTexto(Texto a, Cadena palabraABorrar);
 
 /*
-TipoRetorno BorrarTodo(Texto &a);
-TipoRetorno BorrarOcurrenciasPalabraEnTexto(Texto a, Cadena palabraABorrar);
-TipoRetorno ImprimirTexto(Texto a);
 TipoRetorno ComprimirTexto(Texto &a);
-TipoRetorno BorrarOcurrenciasPalabraEnLinea(Texto a, Posicion posicionLinea, Cadena palabraABorrar);
-TipoRetorno ImprimirLinea(Texto a, Posicion posicionLinea);
 */
 
 
