@@ -158,14 +158,17 @@ int borrarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra){
                         if (countP == posicionPalabra) // Si el contador llegó a la posicionPalabra
                         {
                             if (antP == auxP){ //Si antp y auxp estan con el mismo nodo
-                                delete antP;
+                                delete antP;    //borro el nodo en ambos
                                 delete auxP;
-                                return 0;
+                                antP=antP->sig;  // Los hago avanzar
+                                auxP=auxP->sig;
+                                return 0;   //Done
                             }else{
-                                antP = auxP->sig; // el nodo de antp, saltea el nodo actual de auxP y apunta al siguiente de auxP
-                                delete auxP;
-                                aux=aux->sig;
-                                return 0;
+                                antP = auxP->sig; // el nodo actual de antp, saltea el nodo actual de auxP y apunta al siguiente de auxP
+                                delete auxP; //Borro el nodo actual de auxP
+                                auxP=auxP->sig; //le hago avanzar al siguiente nodo
+                                antP->sig = auxP->sig; //El siguiente nodo de antP apunta al siguiente de auxP
+                                return 0; //Done
                             }
                         }
                         antP = auxP;
@@ -176,12 +179,9 @@ int borrarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra){
                 aux = aux->sig;
                 countL--;
             }
-        }
-        
-
+        }        
         return 0;
     }else{
         return 1;
     }
-
 }
