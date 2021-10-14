@@ -50,6 +50,16 @@ TipoRetorno InsertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionP
     }        
 }
 
+TipoRetorno BorrarPalabra(Texto a, Posicion posicionLinea, Posicion posicionPalabra){
+    int response = borrarPalabra(a, posicionLinea, posicionPalabra);
+
+    if(response == 1){
+        return OK;
+    }else{
+        return ERROR;
+    }   
+}
+
 /*
 TipoRetorno BorrarOcurrenciasPalabraEnTexto(Texto a, Cadena palabraABorrar);
 TipoRetorno ComprimirTexto(Texto &a);

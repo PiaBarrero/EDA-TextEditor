@@ -20,4 +20,6 @@ int largoLinea(Texto a, Posicion posicion);
 
 int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabra);
 
+int borrarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra);
+
 #endif // PALABRA_H

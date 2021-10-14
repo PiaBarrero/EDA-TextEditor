@@ -56,8 +56,6 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
     int countP = 1;
     int largoP = largoLinea(a, posicionLinea);
 
-    //printf("%d ", largoP);
-
     if ((posicionLinea <= countL) && (posicionLinea >= 1) && (posicionPalabra >= 1) && (posicionPalabra <= largoP + 1))
     {
 
@@ -127,4 +125,25 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
     {
         return 0;
     }
+}
+
+int borrarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra){
+
+    Texto aux = a;
+    Texto ant = a;
+
+    int countL = largoTexto(a);
+    int largoL = countL;
+    int countP = 1;
+    int largoP = largoLinea(a, posicionLinea);
+
+    if ((posicionLinea <= countL) && (posicionLinea >= 1) && (posicionPalabra >= 1) && (posicionPalabra <= largoP + 1))
+    { // Si la posicion de la linea y de la palabra existen:
+        
+
+        return 0;
+    }else{
+        return 1;
+    }
+
 }
