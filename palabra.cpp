@@ -56,8 +56,6 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
     int countP = 1;
     int largoP = largoLinea(a, posicionLinea);
 
-    //printf("%d ", largoP);
-
     if ((posicionLinea <= countL) && (posicionLinea >= 1) && (posicionPalabra >= 1) && (posicionPalabra <= largoP + 1))
     {
 

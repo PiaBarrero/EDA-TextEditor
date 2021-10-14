@@ -23,7 +23,7 @@ int main(){
     char e[] = "Y";
     char f[] = "Vos";
     
-    tr = InsertarPalabra(t, 1, 1, a);
+    tr = InsertarPalabra(t, 1, 1, a); // Hola
 
     //printf("%s", t->palabras->palabra);
 
