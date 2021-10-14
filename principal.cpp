@@ -40,7 +40,7 @@ int main(){
 
     tr = InsertarLineaEnPosicion(t, 2);
 
-    tr = BorrarLinea(t, 5);
+    // tr = BorrarLinea(t, 5);
     
     //tr = BorrarTodo(t);
     
