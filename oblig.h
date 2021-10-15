@@ -3,7 +3,7 @@
 
 #include "linea.h"
 
-//#define MAX_CANT_PALABRAS_X_LINEA 10
+#define MAX_CANT_PALABRAS_X_LINEA 5
 
 typedef char* Cadena;
 

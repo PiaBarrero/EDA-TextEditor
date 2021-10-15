@@ -12,39 +12,30 @@ int main(){
     tr = InsertarLinea(t);
     tr = InsertarLinea(t);
     tr = InsertarLinea(t);
-    tr = InsertarLinea(t);
-    tr = InsertarLinea(t);
-    tr = InsertarLinea(t);
 
     char a[] = "Hola";
     char b[] = "Como";
     char c[] = "Estas";
     char d[] = "Bien";
-    char e[] = "Y";
+    char e[] = "Emma";
     char f[] = "Vos";
     
-    tr = InsertarPalabra(t, 1, 1, a);
-
     //printf("%s", t->palabras->palabra);
 
-    tr = InsertarPalabra(t, 1, 2, b); // Hola Como
-    tr = InsertarPalabra(t, 1, 3, c); // Hola como estas
-    tr = InsertarPalabra(t, 1, 2, d); // Hola bien como estas
-    tr = InsertarPalabra(t, 1, 1, e); // y hola bien como estas
-    tr = InsertarPalabra(t, 1, 3, f); // y hola vos bien como estas
-    
+    tr = InsertarPalabra(t, 1, 1, a);
+    tr = InsertarPalabra(t, 1, 2, b);
 
-    tr = InsertarPalabra(t, 4, 1, f);
+    tr = InsertarPalabra(t, 1, 1, a);
+    tr = InsertarPalabra(t, 1, 1, a);
+    tr = InsertarPalabra(t, 1, 1, a);
+    tr = InsertarPalabra(t, 1, 1, a); 
+    tr = InsertarPalabra(t, 1, 1, a); 
+    tr = InsertarPalabra(t, 1, 1, a); 
+    tr = InsertarPalabra(t, 1, 1, a); 
+    tr = InsertarPalabra(t, 1, 1, a); 
+    tr = InsertarPalabra(t, 1, 1, a); 
 
-    tr = InsertarPalabra(t, 2, 1, b);
-
-    tr = InsertarLineaEnPosicion(t, 2);
-
-    tr = BorrarLinea(t, 5);
-    
-    //tr = BorrarTodo(t);
-    
-
+    tr = InsertarPalabra(t, 3, 2, f);
 
     tr = ImprimirTexto(t);
 

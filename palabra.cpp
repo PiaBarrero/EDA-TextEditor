@@ -1,4 +1,4 @@
-#include "linea.h"
+#include "oblig.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -54,6 +54,7 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
     int largoL = countL;
     int countP = 1;
     int largoP = largoLinea(a, posicionLinea);
+    bool inserted = false;
 
     if ((posicionLinea <= countL) && (posicionLinea >= 1) && (posicionPalabra >= 1) && (posicionPalabra <= largoP + 1))
     {
@@ -73,13 +74,13 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
                     auxP->sig = NULL;
                     aux->palabras = auxP;
 
-                    return 1;
+                    inserted = true;
                 }
                 else
                 {
                     while (auxP != NULL) // Recorrer palabras
                     {
-                        if (countP == posicionPalabra)
+                        if (countP == posicionPalabra && inserted == false)
                         {
                             if (antP == auxP)
                             {
@@ -88,7 +89,7 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
                                 antP->sig = auxP;
                                 aux->palabras = antP;
 
-                                return 1;
+                                inserted = true;
                             }
                             else
                             {
@@ -96,16 +97,28 @@ int insertarPalabra(Texto &a, Posicion posicionLinea, Posicion posicionPalabra, 
                                 antP->sig->palabra = palabra;
                                 antP->sig->sig = auxP;
 
-                                return 1;
+                                inserted = true;
                             }
                         }
-                        else if (auxP->sig == NULL)
+                        else if (auxP->sig == NULL && inserted == false)
                         {
                             auxP->sig = new str_pal;
                             auxP->sig->palabra = palabra;
                             auxP->sig->sig = NULL;
 
-                            return 1;
+                            inserted = true;
+                        }
+
+                        if(inserted == true && auxP->sig == NULL && (largoP + 1) > MAX_CANT_PALABRAS_X_LINEA){
+
+                            if(aux == a){ // Si esta en la ultima linea (Primer nodo)
+                                insertarLinea(a);
+                            }
+                            
+                            insertarPalabra(a, posicionLinea + 1, 1, auxP->palabra);
+                            antP->sig = NULL;
+                            delete auxP;
+                            auxP = antP;
                         }
 
                         antP = auxP;
